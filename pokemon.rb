@@ -43,7 +43,6 @@ class Pokemon
   end
 
   def defend(atk, damage)
-    binding.pry
     effectiveness = 0
     if RELATIONS[atk[:type].to_sym][:relations][:high].include?(@type.downcase)
       effectiveness = 1
