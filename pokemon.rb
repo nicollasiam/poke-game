@@ -43,14 +43,15 @@ class Pokemon
   end
 
   def defend(atk, damage)
+    binding.pry
     effectiveness = 0
     if RELATIONS[atk[:type].to_sym][:relations][:high].include?(@type.downcase)
       effectiveness = 1
       @current_hp -= damage * 2
-    elsif RELATIONS[atk[:type].to_sym][:relations][:low].include?(@typedowncase)
+    elsif RELATIONS[atk[:type].to_sym][:relations][:low].include?(@type.downcase)
       effectiveness = -1
       @current_hp -= damage / 2
-    elsif RELATIONS[atk[:type].to_sym][:relations][:none].include?(@typedowncase)
+    elsif RELATIONS[atk[:type].to_sym][:relations][:none].include?(@type.downcase)
       effectiveness = -2
     else
       @current_hp -= damage
