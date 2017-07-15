@@ -1,3 +1,4 @@
 # poke-game
-This is a game played in the terminal.
-Developed by me, with only academic purposes. 
+This is a game developed by me, with only academic purposes.
+
+Used Ruby and Gosu.

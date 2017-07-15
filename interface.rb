@@ -112,9 +112,9 @@ class Interface
     puts "######################################################################"
     puts ""
     if player1.active_pokemon.nil?
-      puts "CONGRATULATIONS, #{player2.name.upcase}!! YOU ARE THE WINNER!!"
-    else
       puts "CONGRATULATIONS, #{player1.name.upcase}!! YOU ARE THE WINNER!!"
+    else
+      puts "CONGRATULATIONS, #{player2.name.upcase}!! YOU ARE THE WINNER!!"
     end
     puts ""
     puts "######################################################################"

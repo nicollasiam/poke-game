@@ -2,8 +2,15 @@ require_relative 'battle_manager'
 require_relative 'poke_controller'
 require_relative 'router'
 
+require_relative 'battle'
+require_relative 'first_menu'
+
 manager = BattleManager.new
 controller = PokeController.new(manager)
-router = Router.new(controller)
+# graphics = PokeWagon.new(controller)
+graphics = FirstMenu.new(controller)
 
-router.run
+graphics.show
+
+#router = Router.new(controller)
+#router.run

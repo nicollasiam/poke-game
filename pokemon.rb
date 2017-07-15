@@ -4,7 +4,7 @@ require_relative 'relations'
 require 'pry'
 
 class Pokemon
-  attr_reader :name, :attacks, :current_hp, :type, :def, :hp, :spd
+  attr_reader :name, :attacks, :current_hp, :type, :def, :hp, :spd, :atk, :image_front, :image_back
 
   def initialize(name, type)
     @name = name
@@ -16,6 +16,9 @@ class Pokemon
     @def = 100
     @spd = 100
     @level = 100
+
+    @image_front = "media/#{@name.downcase}-front.png"
+    @image_back = "media/#{@name.downcase}-back.png"
   end
 
   def sort_attacks(type)
@@ -34,7 +37,6 @@ class Pokemon
       # Damage calculation formula in https://bulbapedia.bulbagarden.net/wiki/Damage
       # NO STAB INCLUDED
       damage = (((42 * atk[:power] * (@atk.to_f / defender_defense_stat)) / 50) + 2).round(2)
-      # damage = (((( (2 * @level) / 5) + 2) * atk[:power] * (@atk / defender_defense_stat)) / 50) + 2
     else # Errou, retorna 0
       damage = 0
     end
@@ -47,10 +49,10 @@ class Pokemon
     if RELATIONS[atk[:type].to_sym][:relations][:high].include?(@type.downcase)
       effectiveness = 1
       @current_hp -= damage * 2
-    elsif RELATIONS[atk[:type].to_sym][:relations][:low].include?(@type.downcase)
+    elsif RELATIONS[atk[:type].to_sym][:relations][:low].include?(@typedowncase)
       effectiveness = -1
       @current_hp -= damage / 2
-    elsif RELATIONS[atk[:type].to_sym][:relations][:none].include?(@type.downcase)
+    elsif RELATIONS[atk[:type].to_sym][:relations][:none].include?(@typedowncase)
       effectiveness = -2
     else
       @current_hp -= damage
